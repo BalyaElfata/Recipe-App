@@ -4,10 +4,12 @@ services:  # Services names are used as DNS Hostnames
   app:
     build:
       context: .
+      args:
+        - DEV=true
     ports:
       - "8000:8000" #port di host:port di container
     volumes:
-      - .:/app  #mounting current directory ke /app
+      - ./app:/app  #mounting current directory ke /app
     command: ["sh", "-c", "python manage.py runserver 0.0.0.0:8000"]  #jalanin command ini ketika docker-compose up
 #     environment:
 #       - DB_HOST=db
